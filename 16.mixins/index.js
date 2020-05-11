@@ -1,3 +1,7 @@
+function mixin(target, ...sources) {
+  Object.assign(target, ...sources);
+}
+
 const canEat = {
   eat: function () {
     this.hunger--;
@@ -20,8 +24,8 @@ const canSwim = {
 function Person() {}
 function Goldfish() {}
 
-Object.assign(Person.prototype, canEat, canWalk);
-Object.assign(Goldfish.prototype, canEat, canSwim);
+mixin(Person.prototype, canEat, canWalk);
+mixin(Goldfish.prototype, canEat, canSwim);
 
 const person = new Person();
 const goldfish = new Goldfish();
